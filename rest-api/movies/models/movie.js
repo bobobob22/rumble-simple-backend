@@ -21,6 +21,10 @@ const movieSchema = new Schema({
         required: true
     },
 
+    accept: {
+        type: String,
+    }
+
 }, {timestamps: true})
 
 module.exports = mongoose.model('Movie', movieSchema);
