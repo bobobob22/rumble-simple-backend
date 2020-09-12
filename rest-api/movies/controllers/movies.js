@@ -58,4 +58,20 @@ exports.deleteMovie = (req, res, next) => {
             console.log(result);
             res.status(200).json({ message: "Deleted movie"})
         })
+        .catch(error => console.log(error));
+
+}
+
+exports.updateMovie = (req, res, next) => {
+    const movieId = req.params.movieId;
+    const accept = req.params.accept
+    Movie.findById(movieId)
+        .then(movie => {
+            if (!movie) {
+                return;
+            }
+            movie.accept = accept;
+            return movie.save();
+        })
+        .catch(error => console.log(error));
 }
