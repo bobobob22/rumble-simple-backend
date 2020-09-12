@@ -74,7 +74,7 @@ exports.updateMovie = (req, res, next) => {
         })
         .then(result => {
             console.log(result);
-            res.status(201).json({ message: "Deleted movie"})
+            res.status(201).json({ message: `Movie is ${accept}`})
         })
         .catch(error => console.log(error));
 }
