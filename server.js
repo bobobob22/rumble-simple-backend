@@ -7,7 +7,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const DATABASE_URL = "mongodb://mongo:27017/users_test";
+const DATABASE_URL = process.env.MONGODB_URI || "mongodb://mongo:27017/users_test";
 
 const movieRoutes = require('./rest-api/movies/routes/movies');
 
