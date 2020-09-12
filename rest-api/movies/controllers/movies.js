@@ -1,5 +1,4 @@
 const Movie = require('../models/movie');
-const { off } = require('../models/movie');
 
 exports.getMovies = (req, res, next) => {
     const offset = req.body.offset;
@@ -35,7 +34,6 @@ exports.addMovie = (req, res, next) => {
 
     movie.save()
         .then(result => {
-            console.log(result)
             res.status(201).json({
                 message: 'Movie has been added excellent',
                 movie: result
@@ -47,6 +45,7 @@ exports.addMovie = (req, res, next) => {
 
 exports.deleteMovie = (req, res, next) => {
     const movieId = req.params.movieId;
+
     Movie.findById(movieId)
         .then(movie => {
             if (!movie) {
@@ -59,12 +58,12 @@ exports.deleteMovie = (req, res, next) => {
             res.status(200).json({ message: "Deleted movie"})
         })
         .catch(error => console.log(error));
-
 }
 
 exports.updateMovie = (req, res, next) => {
     const movieId = req.params.movieId;
-    const accept = req.params.accept
+    const accept = req.params.accept;
+
     Movie.findById(movieId)
         .then(movie => {
             if (!movie) {
