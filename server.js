@@ -1,3 +1,6 @@
+require('dotenv').config()
+const port = process.env.PORT || 3000;
+
 const path = require("path");
 
 const express = require("express");
@@ -38,6 +41,6 @@ app.use("/movies", movieRoutes);
 mongoose
   .connect(DATABASE_URL)
   .then((result) => {
-    app.listen(3000, () => console.log("server started on port 3000"));
+    app.listen(port, () => console.log("server started on port 3000"));
   })
   .catch((err) => console.log(err, "err"));
